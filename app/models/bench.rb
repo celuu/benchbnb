@@ -14,7 +14,7 @@
 #
 class Bench < ApplicationRecord
     validates :title, :description, :price, :seating, :lat, :lng, presence: true
-    validates :price, numericality: {greater_than: 10, less_than:1000},
+    validates :price, numericality: {greater_than: 9, less_than:1001}
 
 
 end
