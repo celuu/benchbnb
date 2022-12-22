@@ -19,11 +19,12 @@ export const fetchBenches = () => async dispatch => {
     let res = await csrfFetch('/api/benches');
     if(res.ok){
         let data = await res.json();
+        console.log(data, "data after it was fetch")
         dispatch(setBenches(data))
     }
 }
 
-export const fetchBench = (benchId) = async dispatch => {
+export const fetchBench = (benchId) => async dispatch => {
     let res = await csrfFetch(`/api/benches/${benchId}`);
     if(res.ok){
         let bench = await res.json();
@@ -47,10 +48,11 @@ export const createBench = (bench) => async dispatch => {
 }
 
 const benchesReducer = (state = {}, action) => {
+    debugger
     let nextState = {...state};
     switch(action.type){
         case SET_BENCHES:
-            return {...nextState, ...action.payload}
+            return {...nextState, ...action.payload.benches}
         case ADD_BENCH:
             return { ...nextState, ...action.payload };   
         default:

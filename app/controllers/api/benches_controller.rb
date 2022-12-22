@@ -17,6 +17,7 @@ class Api::BenchesController < ApplicationController
         @bench = Bench.find(params[:id])
         if @bench
             render :show
+        end
     end
 
     private
